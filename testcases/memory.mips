@@ -1,0 +1,16 @@
+main:	addi	$s0, $zero, 40  # $s0 = 0x28
+	addi	$t1, $zero, 63  # $t1 = 0x3F
+	addi	$t2, $zero, 95  # $t2 = 0x5F
+	addi	$t3, $zero, 127 # $t3 = 0x7F
+
+# This program stores one word in one memory cell and
+# a halfword + two words in another cell.
+	sw	$t1, 0($s0)
+	sh	$t1, 4($s0)
+	sb	$t2, 6($s0)
+	sb	$t3, 7($s0)
+# It also extracts them unhurt again.
+	lw	$s2, 0($s0)
+	lhu	$s3, 4($s0)
+	lbu	$s4, 6($s0)
+	lbu	$s5, 7($s0)

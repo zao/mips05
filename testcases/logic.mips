@@ -1,0 +1,22 @@
+# Exercises the arithmetic and logic instructions.
+
+main:	addi	$s0, $zero, 42
+	addi	$s1, $zero, 5
+
+# R-instructions
+	and	$t0, $s0, $s1	# $t0 = 42 & 5
+	or	$t1, $s0, $s1	# $t1 = 42 | 5
+	nor	$t2, $s0, $s1	# $t2 = 42 nor 5
+	slt	$t3, $s0, $s1	# $t3 = 42 < 5 ? 1 : 0
+	sltu	$t4, $s0, $s1	# $t4 = 42 < 5 ? 1 : 0
+	sll	$t5, $s0, 2	# $t5 = 42 << 2
+	srl	$t6, $s0, 2	# $t6 = 42 >> 2
+
+# I-instructions
+	addiu	$t7, $s0, 5	# $t7 = 42 + 5
+
+	andi	$t8, $s0, 5	# $t8 = 42 & 5
+	ori	$t9, $s0, 5	# $t9 = 42 | 5
+	lui	$s2, 16		# $s2 = 16 << 16;
+	slti	$s3, $s0, 160	# $s3 = 42 < 160 ? 1:0
+	sltiu	$s4, $s0, 160	# $s4 = 42 < 160 ? 1:0

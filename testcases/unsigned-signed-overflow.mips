@@ -1,0 +1,16 @@
+# This program repetadly adds 32000 with both
+# add and addu to show that add detects overflows.
+# It does the same with sub/subu as well.
+main:	addi	$s5, $zero, 32000
+	add	$t0, $s5, $zero
+	addu	$t1, $s5, $zero
+
+	addi	$s7, $zero, 32000
+	sll	$s7, $s7, 2
+	# Add and subtract four different registers
+loop:	add	$t0, $s5, $t0
+	addu	$t1, $s5, $t1
+	sub	$t2, $t2, $s5
+	subu	$t3, $t3, $s5
+	addi	$s7, $s7, -1
+	bne	$s7, $zero, loop

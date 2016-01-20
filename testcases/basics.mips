@@ -1,0 +1,19 @@
+main:	addi	$s0, $zero, 42
+	add	$s1, $s0, $zero		# Adds 42 to $s1
+	sub	$s1, $s1, $s0		# And subtracts the same amount
+	
+	addi	$s2, $zero, 42
+	addi	$s3, $zero, 9
+	and	$s4, $s2, $s3		# 42 & 9 = 8
+	or	$s5, $s2, $s3		# 42 | 9 = 43
+
+	slt	$t0, $s3, $s2		# $t0 = 9 < 42 
+	slt	$t1, $s2, $s3		# $t1 = 42 < 9
+
+	addi	$s6, $zero, 50		# Add 50 to $s6
+	beq	$s2, $s3, stop 		# if $s2 == $s3 goto stop
+					# jump will not be taken
+	addi	$s6, $s6, 4		# else add 4 to $s6
+stop:	sw	$s6, 4($zero)		# store $s6 to memory cell 4
+
+	lw	$t2, 4($zero)		# load value from memory cell 4 to $t2

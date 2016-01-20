@@ -1,0 +1,29 @@
+# This test jumps through all the labels in order,
+# incrementing $t0 on the way. $t0 should be 5 in the
+# end.
+main:	addi	$s0, $zero, 4
+	addi	$s1, $zero, 3
+	addi	$s2, $zero, 2
+	addi	$s3, $zero, 1
+	addi	$s4, $zero, 0
+	addi	$s5, $zero, -1
+	addi	$s6, $zero, -2
+
+	addi	$t0, $zero, 0
+
+	jr	$s3
+	j	first
+	addi	$t0, $t0, 1
+
+first:	jal	second	
+
+fourth:	addi	$t0, $t0, 1
+	j	end
+
+third:	addi	$t0, $t0, 1
+	bne	$s4, $s3, fourth 
+	
+second:	addi	$t0, $t0, 1
+	beq	$s3, $s3, third 
+
+end:	addi	$t0, $t0, 1
